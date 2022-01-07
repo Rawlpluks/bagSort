@@ -25,4 +25,8 @@ public class Individuals {
     public void setBag(ArrayList<Integer> bag) {
         this.bag = bag;
     }
+    
+    public Parent asParent(){
+    return (Parent) this;
+    }
 }

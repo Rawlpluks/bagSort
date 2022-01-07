@@ -22,12 +22,28 @@ public class Parent extends Individuals{
     public int getFitness() {
         return fitness;
     }
-    
-    public int getWeightOfBag(){
-        return 0;
+
+    public void setFitness(int fitness) {
+        this.fitness = fitness;
+    }
+        
+    public int getWeightOfBag(ArrayList<Item> items){
+        int totalWeight = 0;
+        for(int i = 0; i < getBag().size(); i++){
+            if(getBag().get(i) == 1){
+                totalWeight += items.get(i).getWeight();
+            }
+        }        
+        return totalWeight;
     }
     
-    public int getValueOfBag(){
-        return 0;
+    public int getValueOfBag(ArrayList<Item> items){
+        int totalValue = 0;
+        for(int i = 0; i < getBag().size(); i++){
+        if(getBag().get(i) == 1){
+            totalValue += items.get(i).getValue();
+            }
+        }
+        return totalValue;
     }
 }

@@ -4,18 +4,22 @@ import com.mycompany.Classes.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class PrimaryController implements Initializable{
-    
-    private int individualsPerGeneration = 400;
+public class PrimaryController implements Initializable {
+
+    private ArrayList<Item> items = new ArrayList<>();
+    private int startIndividualsPerGeneration = 400;
     private int individualShortendPerGeneration = 0;
     private int numberOfGenerations = 20;
     private int numberOfSimulations = 1;
-    
+    private int maxWeight = 5000;
+    private int collectiveFitness = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
@@ -24,10 +28,9 @@ public class PrimaryController implements Initializable{
             ex.printStackTrace();
         }
     }
-    
-    private ArrayList<Item> setItems() throws Exception{
-        ArrayList<Item> items = new ArrayList<>();
-        
+
+    private ArrayList<Item> setItems() throws Exception {
+
         items.add(new Item("kort", 90, 150));
         items.add(new Item("kompas", 130, 35));
         items.add(new Item("vand", 1530, 200));
@@ -52,34 +55,97 @@ public class PrimaryController implements Initializable{
         items.add(new Item("bog", 300, 10));
         items.add(new Item("notesbog", 900, 1));
         items.add(new Item("telt", 2000, 150));
-        
+
         return items;
     }
-    
-    private void startEvolution(){
+     private float calcAverageValue(ArrayList<Parent> parents){
+        float averageValue = 0;
+        for(i = 0; i < parents.size; i++){
+            averageValue += (parents.getValueOfBag(items)/parents.size);
+            
+        }
+        
+        return averageValue;
+    }
+     
+    private void startEvolution() {
+        
+        Comparator<Parent> sortParentsBasedOnBagValueAscending = new Comparator<Parent>()
+                {
+                    @Override
+                    public int compare(Parent p1, Parent p2){
+                        return (p1.getValueOfBag(items) < p2.getValueOfBag(items) ? -1 : (p1.getValueOfBag(items)== p2.getValueOfBag(items) ? 0 : 1));
+                    }
+            
+                };      
         
         //loop number of times to run simulation
-        for(int i = 0; i < numberOfSimulations; i++) {
-            //create random generation
+        for (int i = 0; i < numberOfSimulations; i++) {
+            int individualsPerGeneration = startIndividualsPerGeneration;
             ArrayList<Parent> parents = new ArrayList<>();
-            
-            for(int u = 0; u < individualsPerGeneration; u++) {
+
+            //create random generation
+            Random random = new Random();
+            for (int u = 0; u < individualsPerGeneration; u++) {
+
+                ArrayList<Integer> newBag = new ArrayList<>();
+
+                for (int n = 0; n < items.size(); n++) {
+                    newBag.add(random.nextInt(1 + 1));
+                }
+                parents.add(new Parent(newBag));
+            }
 
             //loop for number of generations
+            for (int v = 1; v <= numberOfGenerations; v++) {
+
+                //remove parents who exceed weight limit and calc fitness score
+                for (int u = 0; u < parents.size(); u++) {
+                    if (parents.get(u).getWeightOfBag(items) > maxWeight) {
+                        parents.remove(u);
+                        u--;
+                    } else {
+                        parents.get(u).setFitness(parents.get(u).getValueOfBag(items));
+                        collectiveFitness += parents.get(u).getFitness();
+                    }
+                }
                 //sort generation
+                Collections.sort(parents, sortParentsBasedOnBagValueAscending);
 
                 //display generation
+                //shorting the number of individuals per generation
+                individualsPerGeneration -= individualShortendPerGeneration;
 
                 //if more needed, create new generation
+                if (v < numberOfGenerations) {
 
+                    // create gene pool
+                    ArrayList<Parent> matingPool = new ArrayList<>();
+                    for (int u = 0; u < parents.size(); u++) {
+                        float procentageOfNewGeneration = parents.get(u).getFitness() / collectiveFitness;
+                        int numberOfNewParents = (int) Math.ceil(individualsPerGeneration * procentageOfNewGeneration);
+                        for (int n = 0; n < numberOfNewParents; n++) {
+                            matingPool.add(parents.get(u));
+                        }
+                    }
+
+                    parents.clear();
+                    for (int u = 0; u < individualsPerGeneration; u++) {
+                        Child child = new Child(matingPool.get(random.nextInt(matingPool.size())), matingPool.get(random.nextInt(matingPool.size())));
+                        parents.add(child.asParent());
+                    }
+
+                }
+
+            }
             //save simulation
             //save last gen to data base whit variabels and stuff
-            }
+
         }
         //display den bedste simulation
-        
+
     }
-    
+
     @FXML
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
