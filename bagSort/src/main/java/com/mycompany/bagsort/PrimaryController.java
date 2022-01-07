@@ -4,6 +4,7 @@ import com.mycompany.Classes.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -60,8 +61,8 @@ public class PrimaryController implements Initializable {
     }
      private float calcAverageValue(ArrayList<Parent> parents){
         float averageValue = 0;
-        for(i = 0; i < parents.size; i++){
-            averageValue += (parents.getValueOfBag(items)/parents.size);
+        for(int i = 0; i < parents.size(); i++){
+            averageValue += parents.get(i).getValueOfBag(items)/parents.size();
             
         }
         
