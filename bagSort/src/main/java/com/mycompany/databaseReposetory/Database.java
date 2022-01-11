@@ -32,10 +32,10 @@ public class Database {
         
         sql = "INSERT INTO Simulation(itemSet_ID, graph_ID, numberOfGeneration, startIndividualsPerGeneration, "
                 + "individualShortenedPerGeneration, maxWeight, bestValue, worstValue, averageValue, timeUsed) "
-                + "VALUES('" + _simulation.getItemSet_ID() "','" + _simulation.getGraph()"','" + _simulation.getNumberOfGenerations() "',"
-                + "'" + _simulation.getStartIndividualsPerGeneration()"','" + _simulation.getIndividualShortendPerGeneration() "',"
-                + "'" + _simulation.getMaxWeight() "','" + _simulation.getBestValue() "','" + _simulation.getWorstValue() "',"
-                + "'"  + _simulation.getAverageValue() "','" + _simulation.getTimeUsed()"');'" ;
+                + "VALUES('" + _simulation.getItemSet_ID() + "','" + _simulation.getGraph() + "','" + _simulation.getNumberOfGenerations() + "',"
+                + "'" + _simulation.getStartIndividualsPerGeneration() + "','" + _simulation.getIndividualShortendPerGeneration() + "',"
+                + "'" + _simulation.getMaxWeight() + "','" + _simulation.getBestValue() + "','" + _simulation.getWorstValue() + "',"
+                + "'"  + _simulation.getAverageValue() + "','" + _simulation.getTimeUsed() + "');";
         
         
     }
