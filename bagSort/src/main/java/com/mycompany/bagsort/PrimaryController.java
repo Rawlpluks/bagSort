@@ -124,7 +124,7 @@ public class PrimaryController implements Initializable {
                     ArrayList<Parent> matingPool = new ArrayList<>();
                     for (int u = 0; u < parents.size(); u++) {
                         float procentageOfNewGeneration = parents.get(u).getFitness() / collectiveFitness;
-                        int numberOfNewParents = (int) Math.ceil(individualsPerGeneration * procentageOfNewGeneration);
+                        int numberOfNewParents = (int) Math.round(individualsPerGeneration * procentageOfNewGeneration);
                         for (int n = 0; n < numberOfNewParents; n++) {
                             matingPool.add(parents.get(u));
                         }
