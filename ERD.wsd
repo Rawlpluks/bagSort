@@ -1,0 +1,40 @@
+@startuml
+!define table(x) class x << (T,#FFAAAA) >>
+hide methods
+hide stereotypes
+
+table(simulation){
+    PK simulation_ID
+    FK itemSet_ID
+    FK graph_ID
+    int numberOfGeneration 
+    int startIndividualsPerGeneration
+    int individualShortendPerGeneration
+    int maxWeight
+    int bestValue
+    int worsteValue
+    int averageValue
+    int timeUsed
+}
+
+table(itemSets){
+    PK itemSet_ID
+}
+
+table(items){
+    PK item_ID
+    int weight
+    int value
+    String name
+}
+
+table(itemsAndItemSets){
+    FK itemSet_ID
+    FK item_ID
+}
+
+ itemsAndItemSets "1" *-- "many" items
+ itemsAndItemSets "1" *-- "many" itemSets
+ simulation "1" *-- "many" itemSets
+
+@enduml
