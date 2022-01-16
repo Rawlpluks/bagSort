@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 
-public class PrimaryController implements Initializable {
+public class simulationController implements Initializable {
 
     private ArrayList<Item> items = new ArrayList<>();
     private int startIndividualsPerGeneration = App.getCurrentSimulation().getStartIndividualsPerGeneration();

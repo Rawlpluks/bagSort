@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-public class SecondaryController implements Initializable{
+public class mainScreenController implements Initializable{
 
     @FXML
     private void switchToPrimary() throws IOException {
