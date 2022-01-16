@@ -41,13 +41,11 @@ public class mainScreenController implements Initializable{
         App.getCurrentSimulation().setNumberOfGenerations(20);
         App.getCurrentSimulation().setMaxWeight(5000);
         App.getCurrentSimulation().setMutationRate(15);
-                
-        
-        
+        System.out.println("hello");
     }
 
     @FXML
-    private void runSimulation(ActionEvent event) {
+    private void runSimulation(ActionEvent event) throws Exception{
         if(!individualsAtStart.getText().isBlank()){
             App.getCurrentSimulation().setStartIndividualsPerGeneration(Integer.parseInt(individualsAtStart.getText()));
         }
@@ -67,5 +65,7 @@ public class mainScreenController implements Initializable{
         if(!mutationRate.getText().isBlank()) {
             App.getCurrentSimulation().setMutationRate(Integer.parseInt(mutationRate.getText()));
         }
+        
+        App.setRoot("simulation");
     }
 }

@@ -16,29 +16,37 @@ import javafx.scene.chart.XYChart;
 public class simulationController implements Initializable {
 
     private ArrayList<Item> items = new ArrayList<>();
-    private int startIndividualsPerGeneration = 400;//App.getCurrentSimulation().getStartIndividualsPerGeneration();
-    private int individualShortendPerGeneration = 2;//App.getCurrentSimulation().getIndividualShortendPerGeneration();
-    private int numberOfGenerations = 20;//App.getCurrentSimulation().getNumberOfGenerations();
+    private int startIndividualsPerGeneration = App.getCurrentSimulation().getStartIndividualsPerGeneration();
+    private int individualShortendPerGeneration = App.getCurrentSimulation().getIndividualShortendPerGeneration();
+    private int numberOfGenerations = App.getCurrentSimulation().getNumberOfGenerations();
     private int numberOfSimulations = 1;
-    private int maxWeight = 5000; //App.getCurrentSimulation().getMaxWeight();
+    private int maxWeight = App.getCurrentSimulation().getMaxWeight();
     private int collectiveFitness = 0;
-    
-    @FXML LineChart lineChart;
+
+    @FXML
+    LineChart lineChart;
     XYChart.Series seriesH = new XYChart.Series();
     XYChart.Series seriesL = new XYChart.Series();
     XYChart.Series seriesA = new XYChart.Series();
-    
+
     Graph graphs = new Graph();
-   
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             ArrayList<Item> items = setItems();
-            startEvolution();
         } catch (Exception ex) {
             ex.printStackTrace();
+            System.out.println("ERROR: " + ex.getMessage());
         }
+        System.out.println("hello");
         
+        System.out.println(startIndividualsPerGeneration);
+        System.out.println(individualShortendPerGeneration);
+        System.out.println(numberOfGenerations);
+        System.out.println(maxWeight);
+
+        startEvolution();
     }
 
     private ArrayList<Item> setItems() throws Exception {
@@ -70,27 +78,27 @@ public class simulationController implements Initializable {
 
         return items;
     }
-     private float calcAverageValue(ArrayList<Parent> parents){
+
+    private float calcAverageValue(ArrayList<Parent> parents) {
         float averageValue = 0;
-        for(int i = 0; i < parents.size(); i++){
-            averageValue += parents.get(i).getValueOfBag(items)/parents.size();
-            
+        for (int i = 0; i < parents.size(); i++) {
+            averageValue += parents.get(i).getValueOfBag(items) / parents.size();
+
         }
-        
+
         return averageValue;
     }
-     
+
     private void startEvolution() {
-        
-        Comparator<Parent> sortParentsBasedOnBagValueAscending = new Comparator<Parent>()
-                {
-                    @Override
-                    public int compare(Parent p1, Parent p2){
-                        return (p1.getValueOfBag(items) < p2.getValueOfBag(items) ? -1 : (p1.getValueOfBag(items)== p2.getValueOfBag(items) ? 0 : 1));
-                    }
-            
-                };      
-        
+
+        Comparator<Parent> sortParentsBasedOnBagValueAscending = new Comparator<Parent>() {
+            @Override
+            public int compare(Parent p1, Parent p2) {
+                return (p1.getValueOfBag(items) < p2.getValueOfBag(items) ? -1 : (p1.getValueOfBag(items) == p2.getValueOfBag(items) ? 0 : 1));
+            }
+
+        };
+
         //loop number of times to run simulation
         for (int i = 0; i < numberOfSimulations; i++) {
             int individualsPerGeneration = startIndividualsPerGeneration;
@@ -125,9 +133,9 @@ public class simulationController implements Initializable {
                 Collections.sort(parents, sortParentsBasedOnBagValueAscending);
 
                 //display generation
-                graphs.updateGraphData(parents,items);
+                graphs.updateGraphData(parents, items);
                 drawGraph(graphs);
-                    
+
                 //shorting the number of individuals per generation
                 individualsPerGeneration -= individualShortendPerGeneration;
 
@@ -160,24 +168,24 @@ public class simulationController implements Initializable {
         //display den bedste simulation
 
     }
-    
+
     @FXML
-    private void drawGraph (Graph graph) {
-        
+    private void drawGraph(Graph graph) {
+
         seriesH.setName("Highest value");
         seriesL.setName("Lowest value");
         seriesA.setName("Average value");
-        
-        for(int i = 0; i< graph.getHighestValues().size(); i++){
-            seriesH.getData().add(new XYChart.Data(String.valueOf(i+1),graph.getHighestValues().get(String.valueOf(i+1))));
+
+        for (int i = 0; i < graph.getHighestValues().size(); i++) {
+            seriesH.getData().add(new XYChart.Data(String.valueOf(i + 1), graph.getHighestValues().get(String.valueOf(i + 1))));
         }
-        for(int i = 0; i< graph.getLowestValues().size(); i++){
-            seriesL.getData().add(new XYChart.Data(String.valueOf(i+1),graph.getLowestValues().get(String.valueOf(i+1))));
+        for (int i = 0; i < graph.getLowestValues().size(); i++) {
+            seriesL.getData().add(new XYChart.Data(String.valueOf(i + 1), graph.getLowestValues().get(String.valueOf(i + 1))));
         }
-        for(int i = 0; i< graph.getAverageValues().size(); i++){
-            seriesA.getData().add(new XYChart.Data(String.valueOf(i+1),graph.getAverageValues().get(String.valueOf(i+1))));
+        for (int i = 0; i < graph.getAverageValues().size(); i++) {
+            seriesA.getData().add(new XYChart.Data(String.valueOf(i + 1), graph.getAverageValues().get(String.valueOf(i + 1))));
         }
-        
+
         //adding series to lineChart
         lineChart.getData().add(seriesH);
         lineChart.getData().add(seriesL);
