@@ -10,6 +10,8 @@ import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 
 public class PrimaryController implements Initializable {
 
@@ -20,6 +22,8 @@ public class PrimaryController implements Initializable {
     private int numberOfSimulations = 1;
     private int maxWeight = 5000;
     private int collectiveFitness = 0;
+    
+    @FXML LineChart lineChart;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -145,6 +149,31 @@ public class PrimaryController implements Initializable {
         }
         //display den bedste simulation
 
+    }
+    
+    @FXML
+    private void drawGraph (Graph graph) {
+        XYChart.Series seriesH = new XYChart.Series();
+        XYChart.Series seriesL = new XYChart.Series();
+        XYChart.Series seriesA = new XYChart.Series();
+        seriesH.setName("Highest value");
+        seriesL.setName("Lowest value");
+        seriesA.setName("Average value");
+        
+        for(int i = 0; i< graph.highestValues.size(); i++){
+            seriesH.getData().add(new XYChart.Data(toString(i+1),graph.getHighestValues.get(toString(i+1))));
+        }
+        for(int i = 0; i< graph.lowestValues.size(); i++){
+            seriesL.getData().add(new XYChart.Data(toString(i+1),graph.getLowestValues.get(toString(i+1))));
+        }
+        for(int i = 0; i< graph.averageValues.size(); i++){
+            seriesA.getData().add(new XYChart.Data(toString(i+1),graph.getAverageValues.get(toString(i+1))));
+        }
+        
+        //adding series to lineChart
+        lineChart.getData().add(seriesH);
+        lineChart.getData().add(seriesL);
+        lineChart.getData().add(seriesA);
     }
 
     @FXML
