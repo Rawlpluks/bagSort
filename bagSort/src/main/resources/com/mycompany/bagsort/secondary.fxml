@@ -11,10 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="733.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="708.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextArea editable="false" layoutX="456.0" layoutY="198.0" prefHeight="136.0" prefWidth="263.0" style="-fx-background-color: transparent;" text="Standard settings:&#10;&#10;Individuals per generations at the start: 400&#10;Individuals shortened per generations: 0&#10;Generations: 20&#10;Maximum total weight: 5000 &#10;Mutation rate: 5">
+      <TextArea editable="false" layoutX="428.0" layoutY="191.0" prefHeight="136.0" prefWidth="263.0" style="-fx-background-color: transparent;" text="Standard settings:&#10;&#10;Individuals per generations at the start: 400&#10;Individuals shortened per generations: 0&#10;Generations: 20&#10;Maximum total weight: 5000 &#10;Mutation rate: 5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -26,18 +25,18 @@
             </DropShadow>
          </effect>
       </TextArea>
-      <Text layoutX="282.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BagSort">
+      <Text layoutX="270.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BagSort">
          <font>
             <Font name="System Bold" size="45.0" />
          </font>
       </Text>
-      <Line endX="162.0" layoutX="335.0" layoutY="118.0" startX="-100.0" />
-      <Text layoutX="40.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customize simulastion:">
+      <Line endX="162.0" layoutX="323.0" layoutY="118.0" startX="-100.0" />
+      <Text layoutX="35.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customize simulastion:">
          <font>
             <Font name="System Italic" size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="282.0" layoutY="198.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="individualsAtStart" layoutX="279.0" layoutY="191.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>
@@ -45,32 +44,32 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <Text layoutX="40.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Individuals per generation at the start:">
+      <Text layoutX="35.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Individuals per generation at the start:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="41.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Individuals shortened per generation: ">
+      <Text layoutX="36.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Individuals shortened per generation: ">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="128.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of generations:">
+      <Text layoutX="122.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of generations:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="131.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum total weight:">
+      <Text layoutX="126.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum total weight:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Text layoutX="121.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mutation rate (max 100):">
+      <Text layoutX="116.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mutation rate (max 100):">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button layoutX="282.0" layoutY="407.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="START SIMULATION">
+      <Button fx:id="startSim" layoutX="270.0" layoutY="402.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="START SIMULATION">
          <font>
             <Font size="16.0" />
          </font>
@@ -81,7 +80,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField layoutX="281.0" layoutY="232.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="shortenedPerGeneration" layoutX="278.0" layoutY="227.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>
@@ -89,7 +88,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField layoutX="283.0" layoutY="273.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="numberOfGenerations" layoutX="279.0" layoutY="266.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>
@@ -97,7 +96,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField layoutX="282.0" layoutY="313.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="maxTotalWeight" layoutX="279.0" layoutY="304.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>
@@ -105,7 +104,7 @@
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextField>
-      <TextField layoutX="282.0" layoutY="352.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="mutationRate" layoutX="279.0" layoutY="343.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>

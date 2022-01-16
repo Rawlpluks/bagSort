@@ -1,16 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bagsort.PrimaryController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="733.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
+      <Button fx:id="backToSettings" layoutX="293.0" layoutY="459.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="EDIT SETTINGS?">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <effect>
+            <DropShadow height="28.42" radius="13.3375" width="26.93" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <LineChart layoutX="17.0" layoutY="14.0" prefHeight="378.0" prefWidth="700.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+      <Text layoutX="56.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highest value:">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="highestVal" layoutX="160.0" layoutY="403.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Text layoutX="282.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lowest value:">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="lowestVal" layoutX="377.0" layoutY="403.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Text layoutX="501.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average value:">
+         <font>
+            <Font name="System Italic" size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="averageVal" layoutX="606.0" layoutY="401.0" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
    </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+</AnchorPane>
