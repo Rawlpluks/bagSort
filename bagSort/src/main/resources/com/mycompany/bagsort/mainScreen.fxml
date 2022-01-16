@@ -61,7 +61,7 @@
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="startSim" layoutX="270.0" layoutY="402.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="START SIMULATION">
+      <Button fx:id="startSim" layoutX="270.0" layoutY="402.0" mnemonicParsing="false" onAction="#runSimulation" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="START SIMULATION">
          <font>
             <Font size="16.0" />
          </font>

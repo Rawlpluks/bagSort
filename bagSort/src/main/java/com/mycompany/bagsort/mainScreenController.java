@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -35,19 +36,36 @@ public class mainScreenController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            
-            HashMap<String, Integer> test = new HashMap();
-            
-            test.put("1", 23);
-            test.put("2", 92);
-            test.put("3", 88);
-            test.put("4", 56);
-            test.put("5", 342);
-            test.put("6", 13);
-            test.put("8", 34);
-            test.put("7", 373);
-            
-            System.out.println(test.get("1"));
-            test.size();
+        App.getCurrentSimulation().setStartIndividualsPerGeneration(600);
+        App.getCurrentSimulation().setIndividualShortendPerGeneration(10);
+        App.getCurrentSimulation().setNumberOfGenerations(20);
+        App.getCurrentSimulation().setMaxWeight(5000);
+        App.getCurrentSimulation().setMutationRate(15);
+                
+        
+        
+    }
+
+    @FXML
+    private void runSimulation(ActionEvent event) {
+        if(!individualsAtStart.getText().isBlank()){
+            App.getCurrentSimulation().setStartIndividualsPerGeneration(Integer.parseInt(individualsAtStart.getText()));
+        }
+        
+        if(!shortenedPerGeneration.getText().isBlank()) {
+            App.getCurrentSimulation().setIndividualShortendPerGeneration(Integer.parseInt(shortenedPerGeneration.getText()));
+        }
+        
+        if(!numberOfGenerations.getText().isBlank()) {
+            App.getCurrentSimulation().setNumberOfGenerations(Integer.parseInt(numberOfGenerations.getText()));
+        }
+        
+        if(!maxTotalWeight.getText().isBlank()) {
+            App.getCurrentSimulation().setMaxWeight(Integer.parseInt(maxTotalWeight.getText()));
+        }
+        
+        if(!mutationRate.getText().isBlank()) {
+            App.getCurrentSimulation().setMutationRate(Integer.parseInt(mutationRate.getText()));
+        }
     }
 }
