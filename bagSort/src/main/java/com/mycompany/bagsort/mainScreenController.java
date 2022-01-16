@@ -36,9 +36,9 @@ public class mainScreenController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        App.getCurrentSimulation().setStartIndividualsPerGeneration(600);
-        App.getCurrentSimulation().setIndividualShortendPerGeneration(10);
-        App.getCurrentSimulation().setNumberOfGenerations(20);
+        App.getCurrentSimulation().setStartIndividualsPerGeneration(1000);
+        App.getCurrentSimulation().setIndividualShortendPerGeneration(0);
+        App.getCurrentSimulation().setNumberOfGenerations(100);
         App.getCurrentSimulation().setMaxWeight(5000);
         App.getCurrentSimulation().setMutationRate(15);
         System.out.println("hello");

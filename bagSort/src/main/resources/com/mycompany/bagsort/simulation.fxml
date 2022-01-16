@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="733.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bagsort.simulationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="834.0" prefWidth="1387.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bagsort.simulationController">
    <children>
-      <Button fx:id="backToSettings" layoutX="293.0" layoutY="459.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="EDIT SETTINGS?">
+      <Button fx:id="backToSettings" layoutX="273.0" layoutY="749.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="169.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F;" text="EDIT SETTINGS?">
          <font>
             <Font size="16.0" />
          </font>
@@ -24,7 +24,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <LineChart fx:id="lineChart" layoutX="17.0" layoutY="14.0" prefHeight="378.0" prefWidth="700.0">
+      <LineChart fx:id="lineChart" layoutY="14.0" prefHeight="673.0" prefWidth="1372.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -32,12 +32,12 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Text layoutX="56.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highest value:">
+      <Text layoutX="43.0" layoutY="713.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Highest value:">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="highestVal" layoutX="160.0" layoutY="403.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="highestVal" layoutX="147.0" layoutY="691.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>
@@ -48,12 +48,12 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="282.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lowest value:">
+      <Text layoutX="269.0" layoutY="713.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lowest value:">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="lowestVal" layoutX="377.0" layoutY="403.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="lowestVal" layoutX="364.0" layoutY="691.0" prefHeight="26.0" prefWidth="97.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>
@@ -64,12 +64,12 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="501.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average value:">
+      <Text layoutX="481.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average value:">
          <font>
             <Font name="System Italic" size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="averageVal" layoutX="606.0" layoutY="401.0" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
+      <TextField fx:id="averageVal" layoutX="586.0" layoutY="691.0" prefHeight="30.0" prefWidth="92.0" style="-fx-background-color: transparent; -fx-border-color: #7F7F7F; -fx-border-width: 0px 0px 1px 0px;">
          <effect>
             <DropShadow />
          </effect>

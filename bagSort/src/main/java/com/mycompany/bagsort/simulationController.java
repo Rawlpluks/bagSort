@@ -39,20 +39,14 @@ public class simulationController implements Initializable {
             ex.printStackTrace();
             System.out.println("ERROR: " + ex.getMessage());
         }
-        double hej = 0.5;
         
-        System.out.println(hej);
+        seriesH.setName("Highest value");
+        seriesL.setName("Lowest value");
+        seriesA.setName("Average value");
         
-        System.out.println("hello");
-        
-        System.out.println(startIndividualsPerGeneration);
-        System.out.println(individualShortendPerGeneration);
-        System.out.println(numberOfGenerations);
-        System.out.println(maxWeight);
-        
-        /*for(int i: test){
-            System.out.println(i);
-        }*/
+        lineChart.getData().add(seriesH);
+        lineChart.getData().add(seriesL);
+        lineChart.getData().add(seriesA);
         
         startEvolution();
     }
@@ -137,8 +131,7 @@ public class simulationController implements Initializable {
                         collectiveFitness += parents.get(u).getFitness();
                     }
                 }
-                
-                System.out.println(parents.size());
+
                 //sort generation
                 Collections.sort(parents, sortParentsBasedOnBagValueAscending);
 
@@ -151,7 +144,6 @@ public class simulationController implements Initializable {
                 
                 //if more needed, create new generation
                 if (v < numberOfGenerations) {
-                    System.out.println("\n \n \n \n ::::::::::::::::::::::::::::: " + v + " :::::::::::::::::::::::::::: \n \n \n \n");
 
                     // create gene pool
                     ArrayList<Parent> matingPool = new ArrayList<>();
@@ -178,6 +170,8 @@ public class simulationController implements Initializable {
 
             }
             //save simulation
+            System.out.println(parents.get(parents.size()-1).getWeightOfBag(items));
+            System.out.println(parents.get(parents.size()-1).getValueOfBag(items));
             //save last gen to data base whit variabels and stuff
 
         }
@@ -187,13 +181,10 @@ public class simulationController implements Initializable {
 
     @FXML
     private void drawGraph(Graph graph) {
-        seriesH.setName("Highest value");
-        seriesL.setName("Lowest value");
-        seriesA.setName("Average value");
-        
-        //seriesH.getData().clear();
-        //seriesL.getData().clear();
-        //seriesA.getData().clear();
+                
+        seriesH.getData().clear();
+        seriesL.getData().clear();
+        seriesA.getData().clear();
         
         for (int i = 0; i < graph.getHighestValues().size(); i++) {
             seriesH.getData().add(new XYChart.Data(String.valueOf(i + 1), graph.getHighestValues().get(String.valueOf(i + 1))));
@@ -206,9 +197,9 @@ public class simulationController implements Initializable {
         }
 
         //adding series to lineChart
-        lineChart.getData().add(seriesH);
-        lineChart.getData().add(seriesL);
-        lineChart.getData().add(seriesA);
+        //lineChart.getData().add(seriesH);
+       // lineChart.getData().add(seriesL);
+        //lineChart.getData().add(seriesA);
     }
 
     @FXML
