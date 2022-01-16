@@ -19,7 +19,7 @@ public class Child extends Individuals {
 
     private void setChildsBag(Parent parent1, Parent parent2) {
         ArrayList<Integer> tempBag = new ArrayList<>();
-
+        
         int totalFitness = parent1.getFitness() + parent2.getFitness();
         float parent1Wieght = parent1.getFitness() / totalFitness * 100;
         Random x = new Random();
@@ -27,8 +27,10 @@ public class Child extends Individuals {
         //looping through the bag to se for ever gene,
         //if ite mutatets, gets its first parents gene or if it gets the second parents gene
         for (int i = 0; i < parent1.getBag().size(); i++) {
+            
             if ((x.nextInt(100) + 1) < chanceOfMutating) {
                 //mutation
+                
                 tempBag.add(x.nextInt(2));
                 
             } else if ((x.nextInt(100) + 1) < parent1Wieght) {
@@ -52,5 +54,9 @@ public class Child extends Individuals {
 
     public void setChanceOfMutating(int chanceOfMutating) {
         this.chanceOfMutating = chanceOfMutating;
+    }
+    
+    public Parent asParent(){
+        return new Parent(this.getBag());
     }
 }

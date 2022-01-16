@@ -21,7 +21,7 @@ public class simulationController implements Initializable {
     private int numberOfGenerations = App.getCurrentSimulation().getNumberOfGenerations();
     private int numberOfSimulations = 1;
     private int maxWeight = App.getCurrentSimulation().getMaxWeight();
-    private int collectiveFitness = 0;
+    private float collectiveFitness = 0;
 
     @FXML
     LineChart lineChart;
@@ -39,13 +39,21 @@ public class simulationController implements Initializable {
             ex.printStackTrace();
             System.out.println("ERROR: " + ex.getMessage());
         }
+        double hej = 0.5;
+        
+        System.out.println(hej);
+        
         System.out.println("hello");
         
         System.out.println(startIndividualsPerGeneration);
         System.out.println(individualShortendPerGeneration);
         System.out.println(numberOfGenerations);
         System.out.println(maxWeight);
-
+        
+        /*for(int i: test){
+            System.out.println(i);
+        }*/
+        
         startEvolution();
     }
 
@@ -121,7 +129,7 @@ public class simulationController implements Initializable {
 
                 //remove parents who exceed weight limit and calc fitness score
                 for (int u = 0; u < parents.size(); u++) {
-                    if (parents.get(u).getWeightOfBag(items) > maxWeight) {
+                    if ((parents.get(u).getWeightOfBag(items)) > maxWeight) {
                         parents.remove(u);
                         u--;
                     } else {
@@ -129,6 +137,8 @@ public class simulationController implements Initializable {
                         collectiveFitness += parents.get(u).getFitness();
                     }
                 }
+                
+                System.out.println(parents.size());
                 //sort generation
                 Collections.sort(parents, sortParentsBasedOnBagValueAscending);
 
@@ -138,20 +148,26 @@ public class simulationController implements Initializable {
 
                 //shorting the number of individuals per generation
                 individualsPerGeneration -= individualShortendPerGeneration;
-
+                
                 //if more needed, create new generation
                 if (v < numberOfGenerations) {
+                    System.out.println("\n \n \n \n ::::::::::::::::::::::::::::: " + v + " :::::::::::::::::::::::::::: \n \n \n \n");
 
                     // create gene pool
                     ArrayList<Parent> matingPool = new ArrayList<>();
                     for (int u = 0; u < parents.size(); u++) {
-                        float procentageOfNewGeneration = parents.get(u).getFitness() / collectiveFitness;
+                        
+                        
+                        float procentageOfNewGeneration = (parents.get(u).getFitness() / collectiveFitness);
                         int numberOfNewParents = (int) Math.round(individualsPerGeneration * procentageOfNewGeneration);
+                        //System.out.println(individualsPerGeneration * procentageOfNewGeneration);
                         for (int n = 0; n < numberOfNewParents; n++) {
                             matingPool.add(parents.get(u));
                         }
                     }
-
+                    
+                    collectiveFitness = 0;
+                    
                     parents.clear();
                     for (int u = 0; u < individualsPerGeneration; u++) {
                         Child child = new Child(matingPool.get(random.nextInt(matingPool.size())), matingPool.get(random.nextInt(matingPool.size())));
@@ -171,11 +187,14 @@ public class simulationController implements Initializable {
 
     @FXML
     private void drawGraph(Graph graph) {
-
         seriesH.setName("Highest value");
         seriesL.setName("Lowest value");
         seriesA.setName("Average value");
-
+        
+        //seriesH.getData().clear();
+        //seriesL.getData().clear();
+        //seriesA.getData().clear();
+        
         for (int i = 0; i < graph.getHighestValues().size(); i++) {
             seriesH.getData().add(new XYChart.Data(String.valueOf(i + 1), graph.getHighestValues().get(String.valueOf(i + 1))));
         }
