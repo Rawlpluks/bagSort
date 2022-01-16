@@ -16,22 +16,29 @@ import javafx.scene.chart.XYChart;
 public class simulationController implements Initializable {
 
     private ArrayList<Item> items = new ArrayList<>();
-    private int startIndividualsPerGeneration = App.getCurrentSimulation().getStartIndividualsPerGeneration();
-    private int individualShortendPerGeneration = App.getCurrentSimulation().getIndividualShortendPerGeneration();
-    private int numberOfGenerations = App.getCurrentSimulation().getNumberOfGenerations();
+    private int startIndividualsPerGeneration = 400;//App.getCurrentSimulation().getStartIndividualsPerGeneration();
+    private int individualShortendPerGeneration = 2;//App.getCurrentSimulation().getIndividualShortendPerGeneration();
+    private int numberOfGenerations = 20;//App.getCurrentSimulation().getNumberOfGenerations();
     private int numberOfSimulations = 1;
-    private int maxWeight = App.getCurrentSimulation().getMaxWeight();
+    private int maxWeight = 5000; //App.getCurrentSimulation().getMaxWeight();
     private int collectiveFitness = 0;
     
     @FXML LineChart lineChart;
-
+    XYChart.Series seriesH = new XYChart.Series();
+    XYChart.Series seriesL = new XYChart.Series();
+    XYChart.Series seriesA = new XYChart.Series();
+    
+    Graph graphs = new Graph();
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             ArrayList<Item> items = setItems();
+            startEvolution();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        
     }
 
     private ArrayList<Item> setItems() throws Exception {
@@ -118,6 +125,9 @@ public class simulationController implements Initializable {
                 Collections.sort(parents, sortParentsBasedOnBagValueAscending);
 
                 //display generation
+                graphs.updateGraphData(parents,items);
+                drawGraph(graphs);
+                    
                 //shorting the number of individuals per generation
                 individualsPerGeneration -= individualShortendPerGeneration;
 
@@ -153,9 +163,7 @@ public class simulationController implements Initializable {
     
     @FXML
     private void drawGraph (Graph graph) {
-        XYChart.Series seriesH = new XYChart.Series();
-        XYChart.Series seriesL = new XYChart.Series();
-        XYChart.Series seriesA = new XYChart.Series();
+        
         seriesH.setName("Highest value");
         seriesL.setName("Lowest value");
         seriesA.setName("Average value");
