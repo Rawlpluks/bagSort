@@ -22,7 +22,9 @@ public class Child extends Individuals {
         int totalFitness = parent1.getFitness() + parent2.getFitness();
         float parent1Wieght = parent1.getFitness() / totalFitness * 100;
         Random x = new Random();
-
+        
+        //looping through the bag to se for ever gene,
+        //if ite mutatets, gets its first parents gene or if it gets the second parents gene
         for (int i = 0; i < parent1.getBag().size(); i++) {
             if ((x.nextInt(100) + 1) < chanceOfMutating) {
                 //mutation
