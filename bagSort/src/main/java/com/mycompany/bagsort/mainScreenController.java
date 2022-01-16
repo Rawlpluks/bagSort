@@ -10,16 +10,32 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class mainScreenController implements Initializable{
 
     @FXML
+    private Button startSim;
+    @FXML
+    private TextField individualsAtStart;
+    @FXML
+    private TextField shortenedPerGeneration;
+    @FXML
+    private TextField numberOfGenerations;
+    @FXML
+    private TextField maxTotalWeight;
+    @FXML
+    private TextField mutationRate;
+    
+
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+            
             HashMap<String, Integer> test = new HashMap();
             
             test.put("1", 23);
