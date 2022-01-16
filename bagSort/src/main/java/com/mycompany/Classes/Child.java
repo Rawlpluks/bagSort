@@ -5,6 +5,7 @@
  */
 package com.mycompany.Classes;
 
+import com.mycompany.bagsort.App;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -13,8 +14,8 @@ import java.util.Random;
  * @author chris
  */
 public class Child extends Individuals {
-
-    private int chanceOfMutating = 5; // in %
+    
+    private int chanceOfMutating = App.getCurrentSimulation().getMutationRate(); // in %
 
     private void setChildsBag(Parent parent1, Parent parent2) {
         ArrayList<Integer> tempBag = new ArrayList<>();

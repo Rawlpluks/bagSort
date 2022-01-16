@@ -1,5 +1,6 @@
 package com.mycompany.bagsort;
 
+import com.mycompany.Classes.Simulation;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,6 +15,8 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    
+    private static Simulation currentSimulation = new Simulation();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,6 +36,14 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    public static Simulation getCurrentSimulation() {
+        return currentSimulation;
+    }
+
+    public static void setCurrentSimulation(Simulation currentSimulation) {
+        App.currentSimulation = currentSimulation;
     }
 
 }

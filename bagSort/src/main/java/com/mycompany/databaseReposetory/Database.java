@@ -48,11 +48,11 @@ public class Database {
         int graph_ID = 0;
 
         sql = "INSERT INTO Simulation(itemSet_ID, graph_ID, numberOfGenerations, startIndividualsPerGeneration, "
-                + "individualShortenedPerGeneration, maxWeight, bestValue, worstValue, averageValue, timeUsed) "
+                + "individualShortenedPerGeneration, maxWeight, bestValue, worstValue, averageValue, timeUsed, mutationRate) "
                 + "VALUES('" + _simulation.getItemSet_ID() + "','" + graph_ID + "','" + _simulation.getNumberOfGenerations() + "',"
                 + "'" + _simulation.getStartIndividualsPerGeneration() + "','" + _simulation.getIndividualShortendPerGeneration() + "',"
                 + "'" + _simulation.getMaxWeight() + "','" + _simulation.getBestValue() + "','" + _simulation.getWorstValue() + "',"
-                + "'" + _simulation.getAverageValue() + "','" + _simulation.getTimeUsed() + "');";
+                + "'" + _simulation.getAverageValue() + "','" + _simulation.getTimeUsed() + "', '" + _simulation.getMutationRate() + "');";
 
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.executeUpdate();
@@ -88,7 +88,7 @@ public class Database {
             while (rs.next()) {
                 Simulation currentSimulation = new Simulation(rs.getInt("Simulation_ID"), rs.getInt("itemSet_ID"), rs.getInt("numberOfGenerations"),
                         rs.getInt("startIndividualsPerGeneration"), rs.getInt("individualShortendPerGeneration"), rs.getInt("maxWeight"),
-                        rs.getInt("bestValue"), rs.getInt("worsteValue"), rs.getInt("averageValue"), rs.getInt("timeUsed"), null);
+                        rs.getInt("bestValue"), rs.getInt("worsteValue"), rs.getInt("averageValue"), rs.getInt("timeUsed"), rs.getInt("mutationRate"), null);
 
                 ResultSet rsGraph = stat.executeQuery("SELECT * FROM Graph WHERE Graph_ID =('" + rs.getInt("graph_ID") + "')");
                 Graph currentGraph = new Graph();

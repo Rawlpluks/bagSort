@@ -16,11 +16,11 @@ import javafx.scene.chart.XYChart;
 public class PrimaryController implements Initializable {
 
     private ArrayList<Item> items = new ArrayList<>();
-    private int startIndividualsPerGeneration = 400;
-    private int individualShortendPerGeneration = 0;
-    private int numberOfGenerations = 20;
+    private int startIndividualsPerGeneration = App.getCurrentSimulation().getStartIndividualsPerGeneration();
+    private int individualShortendPerGeneration = App.getCurrentSimulation().getIndividualShortendPerGeneration();
+    private int numberOfGenerations = App.getCurrentSimulation().getNumberOfGenerations();
     private int numberOfSimulations = 1;
-    private int maxWeight = 5000;
+    private int maxWeight = App.getCurrentSimulation().getMaxWeight();
     private int collectiveFitness = 0;
     
     @FXML LineChart lineChart;
