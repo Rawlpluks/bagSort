@@ -15,6 +15,7 @@ table(simulation){
     int worsteValue
     int averageValue
     int timeUsed
+    int mutationRate
 }
 
 table(itemSets){

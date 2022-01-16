@@ -48,7 +48,7 @@ public class Database {
         int graph_ID = 0;
 
         sql = "INSERT INTO Simulation(itemSet_ID, graph_ID, numberOfGenerations, startIndividualsPerGeneration, "
-                + "individualShortenedPerGeneration, maxWeight, bestValue, worstValue, averageValue, timeUsed, mutationRate) "
+                + "individualsShortenedPerGeneration, maxWeight, bestValue, worstValue, averageValue, timeUsed, mutationRate) "
                 + "VALUES('" + _simulation.getItemSet_ID() + "','" + graph_ID + "','" + _simulation.getNumberOfGenerations() + "',"
                 + "'" + _simulation.getStartIndividualsPerGeneration() + "','" + _simulation.getIndividualShortendPerGeneration() + "',"
                 + "'" + _simulation.getMaxWeight() + "','" + _simulation.getBestValue() + "','" + _simulation.getWorstValue() + "',"
