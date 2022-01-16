@@ -160,14 +160,14 @@ public class PrimaryController implements Initializable {
         seriesL.setName("Lowest value");
         seriesA.setName("Average value");
         
-        for(int i = 0; i< graph.highestValues.size(); i++){
-            seriesH.getData().add(new XYChart.Data(toString(i+1),graph.getHighestValues.get(toString(i+1))));
+        for(int i = 0; i< graph.getHighestValues().size(); i++){
+            seriesH.getData().add(new XYChart.Data(String.valueOf(i+1),graph.getHighestValues().get(String.valueOf(i+1))));
         }
-        for(int i = 0; i< graph.lowestValues.size(); i++){
-            seriesL.getData().add(new XYChart.Data(toString(i+1),graph.getLowestValues.get(toString(i+1))));
+        for(int i = 0; i< graph.getLowestValues().size(); i++){
+            seriesL.getData().add(new XYChart.Data(String.valueOf(i+1),graph.getLowestValues().get(String.valueOf(i+1))));
         }
-        for(int i = 0; i< graph.averageValues.size(); i++){
-            seriesA.getData().add(new XYChart.Data(toString(i+1),graph.getAverageValues.get(toString(i+1))));
+        for(int i = 0; i< graph.getAverageValues().size(); i++){
+            seriesA.getData().add(new XYChart.Data(String.valueOf(i+1),graph.getAverageValues().get(String.valueOf(i+1))));
         }
         
         //adding series to lineChart
