@@ -21,9 +21,10 @@ public class Simulation {
     private int worstValue;
     private int averageValue;
     private int timeUsed;
+    private int mutationRate;
     private Graph graph;
 
-    public Simulation(int simulation_ID, int itemSet_ID, int numberOfGenerations, int startIndividualsPerGeneration, int individualShortendPerGeneration, int maxWeight, int bestValue, int worstValue, int averageValue, int timeUsed, Graph graph) {
+    public Simulation(int simulation_ID, int itemSet_ID, int numberOfGenerations, int startIndividualsPerGeneration, int individualShortendPerGeneration, int maxWeight, int bestValue, int worstValue, int averageValue, int timeUsed, int mutationRate, Graph graph) {
         this.simulation_ID = simulation_ID;
         this.itemSet_ID = itemSet_ID;
         this.numberOfGenerations = numberOfGenerations;
@@ -34,7 +35,11 @@ public class Simulation {
         this.worstValue = worstValue;
         this.averageValue = averageValue;
         this.timeUsed = timeUsed;
+        this.mutationRate = mutationRate;
         this.graph = graph;
+    }
+
+    public Simulation() {
     }
 
     public int getSimulation_ID() {
@@ -75,6 +80,10 @@ public class Simulation {
 
     public int getTimeUsed() {
         return timeUsed;
+    }
+    
+    public int getMutationRate() {
+        return mutationRate;
     }
 
     public Graph getGraph() {
@@ -121,10 +130,11 @@ public class Simulation {
         this.timeUsed = timeUsed;
     }
 
+    public void setMutationRate(int mutationRate) {
+        this.mutationRate = mutationRate;
+    }
+    
     public void setGraph(Graph graph) {
         this.graph = graph;
-    }
-
-    
-    
+    } 
 }

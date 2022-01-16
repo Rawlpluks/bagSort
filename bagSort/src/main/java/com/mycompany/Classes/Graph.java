@@ -4,6 +4,10 @@
  */
 package com.mycompany.Classes;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 /**
@@ -17,6 +21,28 @@ public class Graph {
     private HashMap<String, Integer> lowestValues = new HashMap();
     private HashMap<String, Integer> averageValues = new HashMap();
 
+    public Graph() {
+    }
+    
+    public void updateGraphData(ArrayList<Parent> generation, ArrayList<Item> items) {
+        //make arraylist of values
+        ArrayList<Integer> values = new ArrayList<>();
+        int totalValue = 0;
+        for(Parent i : generation){
+            values.add(i.getValueOfBag(items));
+            totalValue += i.getValueOfBag(items);
+        }
+
+        //get higehst value
+        highestValues.put(String.valueOf(highestValues.size() + 1), Collections.max(values));
+        
+        //get lowest value
+        lowestValues.put(String.valueOf(lowestValues.size() + 1), Collections.min(values));
+        
+        //get average value
+        averageValues.put(String.valueOf(averageValues.size() + 1), (totalValue / values.size()));
+    }
+    
     public HashMap<String, Integer> getHighestValues() {
         return highestValues;
     }
